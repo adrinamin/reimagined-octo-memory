@@ -1,16 +1,12 @@
 import sqlite3
 
-def initializeDB():
-    sqliteConnection = sqlite3.connect('sql.db')
-    cursor = sqliteConnection.cursor()
-    print('DB Init')
 
+def getSqlVersion(cursor):
     query = 'select sqlite_version();'
     cursor.execute(query)
-
     result = cursor.fetchall()
     print('SQLite Version is {}'.format(result))
-    cursor.close()
+
 
 
 
@@ -20,11 +16,10 @@ def main():
         cursor = sqliteConnection.cursor()
         print('DB Init')
 
-        query = 'select sqlite_version();'
-        cursor.execute(query)
+        getSqlVersion(cursor)
 
-        result = cursor.fetchall()
-        print('SQLite Version is {}'.format(result))
+        cursor.execute("CREATE TABLE contactBook(id none, firstname text, lastname text, adress text, phonenumber text)")
+
         cursor.close()
 
     except sqlite3.Error as error:
