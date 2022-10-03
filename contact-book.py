@@ -1,4 +1,13 @@
 import sqlite3
+import uuid
+
+
+class Contact:
+    def __init__(self, firstname, lastname, address, phonenumber):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.address = address
+        self.phonenumber = phonenumber
 
 
 def getSqlVersion(cursor):
@@ -8,7 +17,20 @@ def getSqlVersion(cursor):
     print('SQLite Version is {}'.format(result))
 
 
+def createContactBookTable(cursor):
+    cursor.execute("DROP TABLE IF EXISTS contactBook")
+    cursor.execute("CREATE TABLE contactBook(id none, firstname text, lastname text, address text, phonenumber text)")
 
+
+def readFromTable(cursor):
+    print("Data Inserted in the table: ")
+    contactBooks=cursor.execute("SELECT * FROM contactBook")
+    for row in contactBooks:
+        print(row)
+
+
+def createContact():
+    return Contact("Adrin", "Amin Salehi", "My address", "+4174395794")
 
 def main():
     try:
@@ -17,8 +39,17 @@ def main():
         print('DB Init')
 
         getSqlVersion(cursor)
+        createContactBookTable(cursor)
 
-        cursor.execute("CREATE TABLE contactBook(id none, firstname text, lastname text, adress text, phonenumber text)")
+        contact = createContact()
+        insertCommand = "INSERT INTO contactBook VALUES ('{}', '{}', '{}', '{}', '{}')".format(str(uuid.uuid4()), createContact().firstname, createContact().lastname, createContact().address, createContact().phonenumber)
+        
+        cursor.execute(insertCommand)
+
+        readFromTable(cursor)
+
+        # Commit your changes in the database    
+        sqliteConnection.commit()
 
         cursor.close()
 
