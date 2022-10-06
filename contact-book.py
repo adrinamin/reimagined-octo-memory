@@ -30,7 +30,16 @@ def readFromTable(cursor):
 
 
 def createContact():
-    return Contact("Adrin", "Amin Salehi", "My address", "+4174395794")
+    print("please insert contact information:")
+    print("firstname: ")
+    firstname = input()
+    print("lastname: ")
+    lastname = input()
+    print("address: ")
+    address = input()
+    print("phone number")
+    phoneNumber = input()
+    return Contact(firstname, lastname, address, phoneNumber)
 
 def main():
     try:
@@ -42,7 +51,7 @@ def main():
         createContactBookTable(cursor)
 
         contact = createContact()
-        insertCommand = "INSERT INTO contactBook VALUES ('{}', '{}', '{}', '{}', '{}')".format(str(uuid.uuid4()), createContact().firstname, createContact().lastname, createContact().address, createContact().phonenumber)
+        insertCommand = "INSERT INTO contactBook VALUES ('{}', '{}', '{}', '{}', '{}')".format(str(uuid.uuid4()), contact.firstname, contact.lastname, contact.address, contact.phonenumber)
         
         cursor.execute(insertCommand)
 
