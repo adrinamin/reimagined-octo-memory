@@ -1,6 +1,18 @@
+tasks:
+  - name: create virtual environment
+    before: 
+      cd .. &&
+      python3 -m venv reimagined-octo-env &&
+      cd reimagined-octo-memory/
+    init: 
+      source ../reimagined-octo-env/bin/activate
+      
 
 vscode:
   extensions:
     - eamodio.gitlens
     - ms-python.python
     - TabNine.tabnine-vscode
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers
