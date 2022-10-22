@@ -1,11 +1,11 @@
 tasks:
   - name: create virtual environment
     init: 
-      cd ..
-      python3 -m venv reimagined-octo-env
-      cd reimagined-octo-memory/
-      source ../reimagined-octo-env/bin/activate
-      python3 -m pip install -r requirements.txt
+      cd .. |
+      python3 -m venv reimagined-octo-env |
+      cd reimagined-octo-memory/ |
+      source ../reimagined-octo-env/bin/activate |
+      python3 -m pip install -r requirements.txt |
       
 
 vscode:
@@ -13,3 +13,6 @@ vscode:
     - eamodio.gitlens
     - ms-python.python
     - TabNine.tabnine-vscode
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.jupyter-renderers
