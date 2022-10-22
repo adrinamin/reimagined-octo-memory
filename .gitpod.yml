@@ -3,7 +3,7 @@ tasks:
     before: 
       cd .. &&
       python3 -m venv reimagined-octo-env &&
-      cd reimagined-octo-memory/ &&
+      cd reimagined-octo-memory/
     init: 
       source ../reimagined-octo-env/bin/activate
       
