@@ -6,7 +6,7 @@ tasks:
       cd reimagined-octo-memory/
     init: 
       source ../reimagined-octo-env/bin/activate
-      
+
 
 vscode:
   extensions:
@@ -16,3 +16,5 @@ vscode:
     - ms-toolsai.jupyter
     - ms-toolsai.jupyter-keymap
     - ms-toolsai.jupyter-renderers
+    - njpwerner.autodocstring
+    - mintlify.document
